@@ -171,18 +171,18 @@ class FilesystemTest extends TestCase
         $this->assertEquals('Hello World', $files->getFoo());
     }
 
-    // public function testFilesMethod()
-    // {
-    //     mkdir($this->tempDir.'/foo');
-    //     file_put_contents($this->tempDir.'/foo/1.txt', '1');
-    //     file_put_contents($this->tempDir.'/foo/2.txt', '2');
-    //     mkdir($this->tempDir.'/foo/bar');
-    //     $files = new Filesystem;
-    //     $results = $files->files($this->tempDir.'/foo');
-    //     $this->assertInstanceOf(SplFileInfo::class, $results[0]);
-    //     $this->assertInstanceOf(SplFileInfo::class, $results[1]);
-    //     unset($files);
-    // }
+    public function testFilesMethod()
+    {
+        mkdir($this->tempDir.'/foo');
+        file_put_contents($this->tempDir.'/foo/1.txt', '1');
+        file_put_contents($this->tempDir.'/foo/2.txt', '2');
+        mkdir($this->tempDir.'/foo/bar', 0777, true);
+        $files = new Filesystem;
+        $results = $files->files($this->tempDir.'/foo');
+        $this->assertInstanceOf(SplFileInfo::class, $results[0]);
+        $this->assertInstanceOf(SplFileInfo::class, $results[1]);
+        unset($files);
+    }
 
     public function testCopyDirectoryReturnsFalseIfSourceIsntDirectory()
     {
@@ -192,7 +192,7 @@ class FilesystemTest extends TestCase
 
     public function testCopyDirectoryMovesEntireDirectory()
     {
-        mkdir($this->tempDir.'/tmp', 0777, true);
+        mkdir($this->tempDir.'/tmp');
         file_put_contents($this->tempDir.'/tmp/foo.txt', '');
         file_put_contents($this->tempDir.'/tmp/bar.txt', '');
         mkdir($this->tempDir.'/tmp/nested', 0777, true);
@@ -209,7 +209,7 @@ class FilesystemTest extends TestCase
 
     public function testMoveDirectoryMovesEntireDirectory()
     {
-        mkdir($this->tempDir.'/tmp', 0777, true);
+        mkdir($this->tempDir.'/tmp');
         file_put_contents($this->tempDir.'/tmp/foo.txt', '');
         file_put_contents($this->tempDir.'/tmp/bar.txt', '');
         mkdir($this->tempDir.'/tmp/nested', 0777, true);
@@ -227,12 +227,12 @@ class FilesystemTest extends TestCase
 
     public function testMoveDirectoryMovesEntireDirectoryAndOverwrites()
     {
-        mkdir($this->tempDir.'/tmp', 0777, true);
+        mkdir($this->tempDir.'/tmp');
         file_put_contents($this->tempDir.'/tmp/foo.txt', '');
         file_put_contents($this->tempDir.'/tmp/bar.txt', '');
         mkdir($this->tempDir.'/tmp/nested', 0777, true);
         file_put_contents($this->tempDir.'/tmp/nested/baz.txt', '');
-        mkdir($this->tempDir.'/tmp2', 0777, true);
+        mkdir($this->tempDir.'/tmp2');
         file_put_contents($this->tempDir.'/tmp2/foo2.txt', '');
         file_put_contents($this->tempDir.'/tmp2/bar2.txt', '');
 
@@ -250,9 +250,9 @@ class FilesystemTest extends TestCase
 
     public function testMoveDirectoryReturnsFalseWhileOverwritingAndUnableToDeleteDestinationDirectory()
     {
-        mkdir($this->tempDir.'/tmp', 0777, true);
+        mkdir($this->tempDir.'/tmp');
         file_put_contents($this->tempDir.'/tmp/foo.txt', '');
-        mkdir($this->tempDir.'/tmp2', 0777, true);
+        mkdir($this->tempDir.'/tmp2');
 
         $files = m::mock(Filesystem::class)->makePartial();
         $files->shouldReceive('deleteDirectory')->once()->andReturn(false);
