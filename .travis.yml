@@ -126,6 +126,7 @@ before_install:
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_pdo_mysql.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_pdo_sqlite.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_fileinfo.dll" >> /c/tools/$PHP_DIR/php.ini; fi
+  - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_gd2.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "memory_limit=256M" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then choco install sqlite mysql redis-64 -y --allow-empty-checksums; fi
   - if [[ $TRAVIS_OS_NAME != 'windows' ]]; then phpenv config-rm xdebug.ini || true; fi
