@@ -18,7 +18,7 @@ class FilesystemAdapterTest extends TestCase
 
     public function setUp()
     {
-        $this->tempDir = __DIR__.'/tmp';
+        $this->tempDir = __DIR__.DIRECTORY_SEPARATOR.'tmp';
         $this->filesystem = new Filesystem(new Local($this->tempDir));
     }
 
@@ -63,7 +63,7 @@ class FilesystemAdapterTest extends TestCase
     {
         $this->filesystem->write('file.txt', 'Hello World');
         $filesystemAdapter = new FilesystemAdapter($this->filesystem);
-        $this->assertEquals($this->tempDir.'/file.txt', $filesystemAdapter->path('file.txt'));
+        $this->assertEquals($this->tempDir.DIRECTORY_SEPARATOR.'file.txt', $filesystemAdapter->path('file.txt'));
     }
 
     public function testGet()
