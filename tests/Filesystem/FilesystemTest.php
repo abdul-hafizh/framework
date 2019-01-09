@@ -16,11 +16,8 @@ class FilesystemTest extends TestCase
 
     public function setUp()
     {
-        $this->tempDir = __DIR__.'/tmp';
-
-        if (! is_dir($this->tempDir)) {
-            mkdir($this->tempDir, 0777, true);
-        }
+        $this->tempDir = __DIR__.DIRECTORY_SEPARATOR.'tmp';
+        mkdir($this->tempDir);
     }
 
     public function tearDown()
