@@ -123,7 +123,7 @@ before_install:
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo 'extension_dir="ext"' >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_openssl.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_mbstring.dll" >> /c/tools/$PHP_DIR/php.ini; fi
-  - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_pdo.dll" >> /c/tools/$PHP_DIR/php.ini; fi
+#  - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_pdo.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_pdo_mysql.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_pdo_sqlite.dll" >> /c/tools/$PHP_DIR/php.ini; fi
   - if [[ $TRAVIS_OS_NAME = 'windows' ]]; then echo "extension=php_fileinfo.dll" >> /c/tools/$PHP_DIR/php.ini; fi
