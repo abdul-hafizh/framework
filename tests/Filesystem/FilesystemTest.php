@@ -19,7 +19,7 @@ class FilesystemTest extends TestCase
         $this->tempDir = __DIR__.'/tmp';
 
         if (! is_dir($this->tempDir)) {
-            mkdir($this->tempDir);
+            mkdir($this->tempDir, 0777, true);
         }
     }
 
